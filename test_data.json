@@ -1,0 +1,8 @@
+
+
+{
+	"animators":["bob", "alice", "jane", "frank"],
+"shots":["0010","0015","0020","0025", "0030", "0040", "0050", "0060","test"],
+"animation_directors" : ["betty", "flork"],
+"camera" : ["c1", "c2", "c3"]
+}

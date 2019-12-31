@@ -1,0 +1,18 @@
+# test file for global settings project
+
+
+
+vfx_path: "{job_root}/dailies/vfx/{date}/"
+edit_path: "{job_root}/editorial/vfx/{date}/"
+
+# sg_project is the shotgun project name to use
+sg_project: "Harry's motorboat sank"
+
+# background HD image used for slate
+slate_image_hd: '../images/VFX_slate_hd.png'
+slate_image_uhd: '../images/vfx_slate_uhd.tif'
+
+
+
+nuke_binary:  'C:/Program Files/Nuke11.3v5/Nuke11.3.exe'
+ffmpeg_binary: '\\\\Windows\\FFmpeg\\bin\\ffmpeg.exe'
