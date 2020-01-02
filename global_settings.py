@@ -5,6 +5,7 @@ A quick Singlton class for reading yaml or json files. This will make is quick a
 to use settings files throughout a program
 """
 import sys
+import os
 import importlib.util
 import json
 
@@ -35,7 +36,22 @@ class GlobalSettings(Borg):
         """ set value for key. If key does not exist, a new dict entry will be created """
         self._shared_data[name] = value
 
-    def read_yaml_file(self, path):
+    def dict(self):
+        """ return dictionary of global settings"""
+        return self.__dict__
+
+
+    def load_file(self, path):
+        ext = os.path.splitext(path)[1][1:]
+        if ext == 'yml' or ext == 'yaml':
+            self._read_yaml_file(path)
+        elif ext == 'json':
+            self._read_json_file(path)
+        else:
+            print("input file extension must be yml, yaml or json")
+
+
+    def _read_yaml_file(self, path):
         """ read in a yaml text file and populate Singleton's dict with entries.
         """
         name = 'yaml'
@@ -65,7 +81,7 @@ class GlobalSettings(Borg):
 
 
 
-    def read_json_file(self, path):
+    def _read_json_file(self, path):
         """ read in a json text file and populate Singleton's dict with entries"""
         try:
             read_file = open(path, 'r')
@@ -110,8 +126,14 @@ print(z)
 
 
 
-z.read_json_file("test_data.json")
+z.load_file("test_data.json")
 print(z)
 
-z.read_yaml_file("test_data.yml")
+z.load_file("test_data.yml")
 print(z)
+
+
+print(" *** dict ***")
+y = z.dict()
+for k, v in y.items():
+    print(k, v)
